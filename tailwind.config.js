@@ -1,11 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js, jsx, tsx, scss}"],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      boxShadow: {
-        'Container': '0 15px 20px rgba(0, 0, 0, 0.1)',
-      }
+      colors: {
+        'myBlack': '#0E0805',
+        'mySecondary' : '#E7C89D',
+        'myGrey' : '#FBF8F7',
+        'myHoverGrey': '#F4F1F0',
+        'myOrange': '#CA512E'
+      },
     },
   },
   plugins: [],
