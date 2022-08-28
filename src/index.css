@@ -8,3 +8,12 @@ body {
     margin: 60px 0;
     padding: 0 20px;
 }
+
+.cards__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    grid-column-gap: 60px;
+    place-items: center;
+    grid-row-gap: 60px;
+    @apply p-6 sm:p-16
+}

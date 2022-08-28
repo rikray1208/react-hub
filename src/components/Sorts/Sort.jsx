@@ -20,7 +20,7 @@ const Sort = () => {
                 Сортировка по: <span className='text-mySecondary font-light underline cursor-pointer select-none' onClick={() => setActive(!active)}>{currentSort}</span>
             </p>
             {active && (
-                <ul className='flex flex-col bg-myGrey p-4 rounded-2xl absolute top-12 right-[-2px]'>
+                <ul className='flex flex-col bg-myGrey p-4 rounded-2xl absolute top-12 right-[-2px] z-10'>
                     {sortsArr.map(el =>
                         <li key={el} onClick={() => clickOnItem(el)} className='font-semibold text-base'>{el}</li>
                     )}
