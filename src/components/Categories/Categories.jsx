@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+import classes from "./Categories.module.scss";
 
 const Categories = () => {
-
     const categories = ['Все','Десерты', 'Салаты', 'ПП', 'Мясо']
+    const [isActive, setIsActive] = useState('Все');
+
     return (
-        <div className='max-w-[510px] w-max overflow-auto'>
-            <ul className='flex gap-x-3'>
+        <div className={classes.container}>
+            <ul>
                 {categories.map(el =>
-                    <li className='block text-base font-bold px-6 py-2 text-white bg-myOrange rounded-[30px]'>{el}</li>
+                    <li key={el} onClick={() => setIsActive(el)} className={isActive === el ? classes.active : null}>{el}</li>
                 )}
             </ul>
         </div>
