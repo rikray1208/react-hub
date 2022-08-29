@@ -7,6 +7,7 @@ module.exports = {
         'myBlack': '#0E0805',
         'mySecondary' : '#E7C89D',
         'myGrey' : '#FBF8F7',
+        'lightGrey': '#626262',
         'myHoverGrey': '#F4F1F0',
         'myOrange': '#CA512E',
         'mySideText': '#0E0805'

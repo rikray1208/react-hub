@@ -1,28 +1,28 @@
 import React, {useState} from 'react';
 import sortIcon from "../../assets/sortIcon.png";
+import {useSortAndFilterContext} from "../../context/SortAndFilterContext";
 
 const Sort = () => {
     const [active, setActive] = useState(false);
-    const [currentSort, setCurrentSort] = useState('времени готовки')
+    const {sortType, setSortType} = useSortAndFilterContext();
 
-    const sortsArr = ['времени готовки', 'калорийности', 'сложности'];
-    function clickOnItem(name) {
+    const sortsArr = [{name: 'времени готовки', type:'cookingTime'}, {name: 'калорийности', type:'calories'}, {name: 'популярности', type:'rating'}, {name: 'названию', type:'title'}];
+
+    function clickOnItem({name, type}) {
         setActive(false);
-        setCurrentSort(name);
+        setSortType({name, type});
     }
-
-
 
     return (
         <div tabIndex={1} onBlur={()=> setActive(false)} className='flex flex-wrap items-center relative outline-none'>
             <img className='w-fit h-fit mr-1.5' alt='#' src={sortIcon}/>
             <p className='text-sm font-bold md:text-lg'>
-                Сортировка по: <span className='text-mySecondary font-light underline cursor-pointer select-none' onClick={() => setActive(!active)}>{currentSort}</span>
+                Сортировка по: <span className='text-mySecondary font-light underline cursor-pointer select-none' onClick={() => setActive(!active)}>{sortType.name}</span>
             </p>
             {active && (
                 <ul className='flex flex-col bg-myGrey p-4 rounded-2xl absolute top-12 right-[-2px] z-10'>
                     {sortsArr.map(el =>
-                        <li key={el} onClick={() => clickOnItem(el)} className='font-semibold text-base'>{el}</li>
+                        <li key={el.type} onClick={() => clickOnItem(el)} className='font-semibold text-base'>{el.name}</li>
                     )}
                 </ul>
             )}

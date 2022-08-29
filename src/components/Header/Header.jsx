@@ -3,8 +3,9 @@ import logo from "../../assets/headerImg/logo.png";
 import BookMarkSvg from "../UI/svgImages/BookMarkSvg";
 import ProfileSvg from "../UI/svgImages/ProfileSvg";
 import HeaderButton from "../UI/buttons/HeaderButton";
-import MyInput from "../UI/input/MyInput";
+import Search from "../UI/inputs/Search";
 import {Link} from "react-router-dom";
+import {useSearchContext} from "../../context/SearchContext";
 
 const Header = () => {
     return (
@@ -19,15 +20,15 @@ const Header = () => {
                 </Link>
             </div>
             <div className='flex gap-x-2 lg:gap-x-6'>
-                <MyInput/>
-                <HeaderButton>
-                    <BookMarkSvg/>
-                </HeaderButton>
+                <Search/>
                 <Link to='/saved'>
                     <HeaderButton>
-                        <ProfileSvg/>
+                        <BookMarkSvg/>
                     </HeaderButton>
                 </Link>
+                <HeaderButton>
+                    <ProfileSvg/>
+                </HeaderButton>
             </div>
         </header>
     );
