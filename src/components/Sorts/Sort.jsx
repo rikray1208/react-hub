@@ -1,17 +1,23 @@
 import React, {useState} from 'react';
 import sortIcon from "../../assets/sortIcon.png";
-import {useSortAndFilterContext} from "../../context/SortAndFilterContext";
+import {useDispatch, useSelector} from "react-redux";
+import {setSortType} from "../../redux/filterSlice";
 
 const Sort = () => {
     const [active, setActive] = useState(false);
-    const {sortType, setSortType} = useSortAndFilterContext();
 
     const sortsArr = [{name: 'времени готовки', type:'cookingTime'}, {name: 'калорийности', type:'calories'}, {name: 'популярности', type:'rating'}, {name: 'названию', type:'title'}];
 
+    const sortType = useSelector((state) => state.filterSlice.sortType);
+    const dispath = useDispatch();
+
+
     function clickOnItem({name, type}) {
         setActive(false);
-        setSortType({name, type});
+        dispath(setSortType({name, type}));
     }
+
+    console.log('render sort');
 
     return (
         <div tabIndex={1} onBlur={()=> setActive(false)} className='flex flex-wrap items-center relative outline-none'>

@@ -4,14 +4,11 @@ import Card from "../components/Card/Card";
 import {useFetch} from "../hooks/useFetch";
 import axios from "axios";
 import {recipesRequestUrl} from "../utils/api";
-import {useSortAndFilterContext} from "../context/SortAndFilterContext";
 import {useSearchContext} from "../context/SearchContext";
-
-;
+import {useSelector} from "react-redux";
 
 const Home = () => {
-    const {category, sortType} = useSortAndFilterContext();
-    const {searchValue} = useSearchContext();
+    const {category, sortType, searchValue} = useSelector((state) => state.filterSlice);
 
     const [recipes, isLoading, error] = useFetch(() => {
         return axios.get(recipesRequestUrl, {

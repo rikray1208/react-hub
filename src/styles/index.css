@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind utilities;
+
+
+body {
+    background-color: #E8C9A2;
+    font-family: 'Nunito', sans-serif;
+    margin: 60px 0;
+    padding: 0 20px;
+}
+
+.wrapper {
+    @apply block max-w-[1340px] w-full min-h-[100vh] rounded-xl mx-auto bg-white shadow-Container;
+}
+
+.cards__container {
+
+    @apply flex flex-wrap gap-4 justify-center px-6 py-10 border-b-2 border-b-myGrey flex md:px-16 md:justify-between
+}

@@ -9,7 +9,7 @@ export const useSortAndFilterContext = () => {
 const SortAndFilterProvider = ({ children }) => {
     const [category, setCategory] = useState('Мясо');
     const [sortType, setSortType] = useState({name: 'популярности', type: 'rating'});
-    console.log(sortType)
+
     return (
         <SortAndFilterContext.Provider value={{
             category, setCategory,
