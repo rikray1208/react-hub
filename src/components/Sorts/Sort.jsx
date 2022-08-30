@@ -11,13 +11,10 @@ const Sort = () => {
     const sortType = useSelector((state) => state.filterSlice.sortType);
     const dispath = useDispatch();
 
-
     function clickOnItem({name, type}) {
         setActive(false);
         dispath(setSortType({name, type}));
     }
-
-    console.log('render sort');
 
     return (
         <div tabIndex={1} onBlur={()=> setActive(false)} className='flex flex-wrap items-center relative outline-none'>
@@ -28,7 +25,13 @@ const Sort = () => {
             {active && (
                 <ul className='flex flex-col bg-myGrey p-4 rounded-2xl absolute top-12 right-[-2px] z-10'>
                     {sortsArr.map(el =>
-                        <li key={el.type} onClick={() => clickOnItem(el)} className='font-semibold text-base'>{el.name}</li>
+                        <li
+                            key={el.type}
+                            onClick={() => clickOnItem(el)}
+                            className='font-semibold text-base'
+                        >
+                            {el.name}
+                        </li>
                     )}
                 </ul>
             )}

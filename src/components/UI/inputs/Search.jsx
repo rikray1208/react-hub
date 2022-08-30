@@ -1,21 +1,30 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import SearchSvg from "../svgImages/SearchSvg";
 import {useDispatch, useSelector} from "react-redux";
 import {setSearchValue} from "../../../redux/filterSlice";
+import classes from "./Search.module.scss";
+import closeIcon from '../../../assets/close.svg'
 
 const Search = () => {
     const searchValue = useSelector((state) => state.filterSlice.searchValue);
     const dispath = useDispatch();
+    const inputRef = useRef();
+
+    function clearSearch() {
+        dispath(setSearchValue(''));
+        inputRef.current.focus()
+    }
 
     return (
-        <div className='flex gap-x-2 items-center border border-mySecondary rounded-2xl px-4  max-w-[170px] h-12 w-full lg:max-w-[240px]'>
+        <div className={classes.container}>
             <SearchSvg/>
             <input
+                ref={inputRef}
                 onChange={(event) => dispath(setSearchValue(event.target.value))}
-                className='max-w-[178px] w-full text-myBlack text-sm outline-none placeholder:text-mySecondary lg:text-base'
                 placeholder='Поиск рецетопв...'
                 value={searchValue}
             />
+            {searchValue ? <img className={classes.search_closeIcon} alt='close' src={closeIcon} onClick={() => clearSearch()}/> : ''}
         </div>
     );
 };

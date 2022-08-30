@@ -4,18 +4,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCategory} from "../../redux/filterSlice";
 
 const Categories = () => {
-    const categories = ['Все','Десерты', 'Салаты', 'ПП', 'Мясо'];
+    const categories = [
+        {name: 'Все', option: 'vse'},
+        {name: 'Десерты', option: 'deserty'},
+        {name: 'Салаты', option: 'salaty'},
+        {name: 'ПП', option: 'pp'},
+        {name: 'Мясо', option: 'myaso'}
+    ];
 
     const category = useSelector((state) => state.filterSlice.category);
     const dispath = useDispatch();
-
-    console.log('render categories');
 
     return (
         <div className={classes.container}>
             <ul>
                 {categories.map(el =>
-                    <li key={el} onClick={() => dispath(setCategory(el))} className={category === el ? classes.active : null}>{el}</li>
+                    <li
+                        key={el.option}
+                        onClick={() => dispath(setCategory(el.option))}
+                        className={category === el.option ? classes.active : null}
+                    >
+                        {el.name}
+                    </li>
                 )}
             </ul>
         </div>
