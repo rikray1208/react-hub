@@ -1,27 +1,21 @@
 import React from 'react';
 import bad from '../assets/emoji/bad.png'
 import ButtonLink from "../components/UI/buttons/ButtonLink";
-import {useFetch} from "../hooks/useFetch";
-import axios from "axios";
-import {recipesRequestUrl} from "../utils/api";
 import Card from "../components/Card/Card";
+import {useSelector} from "react-redux";
 
 const Saved = () => {
-    const fakeDataArr = [];
-    const [data, isLoading, error] = useFetch(() => {
-        return axios.get(recipesRequestUrl);
-
-    })
+    const likedArray = useSelector((state) => state.cart.likedCards);
 
     return (
         <>
-            {data.length
+            {likedArray.length
                 ?
                 <>
                     <h1 className='pl-16 pt-10 text-3xl font-bold text-myBlack'>Мои закладки:</h1>
-                    <div className='cards__container'>
-                        {data.map(el =>
-                            <Card key={el.key} {...el}/>
+                    <div className='grid grid-cols-1 p-6 place-items-center gap-y-16 md:grid-cols-2 md:p-16 lg:grid-cols-3 xl:grid-cols-4'>
+                        {likedArray.map(el =>
+                            <Card key={el.id} {...el}/>
                         )}
                     </div>
                 </>

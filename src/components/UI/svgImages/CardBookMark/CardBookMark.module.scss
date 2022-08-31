@@ -1,0 +1,19 @@
+.svg {
+
+}
+
+.svg-enter {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+.svg-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.svg-exit {
+  opacity: 1;
+}
+.svg-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}

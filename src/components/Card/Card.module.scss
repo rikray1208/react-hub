@@ -1,0 +1,31 @@
+.container {
+  @apply relative max-w-[255px] h-[300px] rounded-2xl bg-white shadow-cardShadow flex flex-col overflow-hidden
+}
+
+.title {
+  @apply flex justify-center items-center w-full h-full text-2xl text-myBlack font-bold text-center
+}
+
+.container__categories {
+  @apply flex gap-x-3 mt-auto px-3
+}
+
+.categories__mainCategory {
+  @apply mr-auto flex items-center
+}
+
+.mainCategory__name {
+  @apply text-sm font-bold ml-1.5
+}
+
+.categories__categoryBlock {
+  @apply flex gap-x-1.5 items-center
+}
+
+.categoryBlock__name {
+  @apply text-mySideText text-xs font-medium
+}
+
+.foodImg {
+  @apply w-full h-[172px] mt-[10px] rounded-xl object-cover
+}
