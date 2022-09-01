@@ -3,6 +3,7 @@ import bad from '../assets/emoji/bad.png'
 import ButtonLink from "../components/UI/buttons/ButtonLink";
 import Card from "../components/Card/Card";
 import {useSelector} from "react-redux";
+import {useLocation} from "react-router-dom";
 
 const Saved = () => {
     const likedArray = useSelector((state) => state.cart.likedCards);

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import caloriesImg from "../../assets/cardImg/calories.png";
 import time from "../../assets/cardImg/time.png";
 import {Link} from "react-router-dom";
@@ -6,29 +6,21 @@ import CardBookMark from "../UI/svgImages/CardBookMark/CardBookMark";
 import classes from "./Card.module.scss";
 import ButtonArrow from "../UI/buttons/ButtonArrow";
 import {useDispatch, useSelector} from "react-redux";
-import {addRecipe, deleteRecipe} from "../../redux/cartSlice";
+import {addRecipe, deleteRecipe, selectCartByID} from "../../redux/cartSlice";
 
 const Card = (props) => {
     const {id, title, category, categoryImg, imageUrl, cookingTime, calories} = props;
     const dispath = useDispatch();
-    const test = useSelector((state) => state.cart.likedCards);
+    const likedCardById = useSelector(selectCartByID(id));
 
-    function saveRecipt() {
-        for(let i = 0; i < test.length; i++) {
-            if (test[i].id === id) {
-                dispath(deleteRecipe(id));
-                return
-            }
-        }
-        dispath(addRecipe(props))
+    function saveRecipe() {
+        likedCardById ? dispath(deleteRecipe(id)): dispath(addRecipe(props))
     }
-
-    const finde = test.find( el => el.id === id );
 
     return (
        <>
            <div className={classes.container}>
-               <CardBookMark onClick={() => saveRecipt()} flag={finde} />
+               <CardBookMark onClick={() => saveRecipe()} flag={likedCardById} />
                <h1 className={classes.title}>{title}</h1>
                <div className={classes.container__categories}>
                    <div className={classes.categories__mainCategory}>
@@ -45,7 +37,7 @@ const Card = (props) => {
                    </div>
                </div>
                <img className={classes.foodImg} alt='food' src={imageUrl} />
-               <Link to={`/recipe/${title}`}>
+               <Link to={`/recipe/${id}`}>
                    <ButtonArrow/>
                </Link>
            </div>

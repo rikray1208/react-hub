@@ -4,10 +4,10 @@ import {recipesRequestUrl} from "../utils/api";
 
 export const fetchRecipes = createAsyncThunk(
     'recipes/fetchRecipesStatus',
-    async (params) => {
+    async (params, thunkAPI) => {
         const {sortBy, order, filter, search} = params;
-
-        const data = await axios.get(recipesRequestUrl, {
+        const {rejectWithValue} = thunkAPI;
+        const {data} = await axios.get(recipesRequestUrl, {
             params: {
                 sortBy,
                 order,
@@ -15,7 +15,8 @@ export const fetchRecipes = createAsyncThunk(
                 search
             }
         });
-        return data.data
+
+        return data
     }
     )
 
@@ -46,7 +47,7 @@ const recipesSlice = createSlice({
 
         [fetchRecipes.rejected]: (state, action) => {
             state.status = "error";
-            state.error = action.error.name
+            state.error = action.error.message
         },
     }
 })

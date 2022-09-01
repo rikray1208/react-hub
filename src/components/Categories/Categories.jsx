@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./Categories.module.scss";
 import {useDispatch, useSelector} from "react-redux";
-import {setCategory} from "../../redux/filterSlice";
+import {selectFilter, setCategory} from "../../redux/filterSlice";
 
 const Categories = () => {
     const categories = [
@@ -12,7 +12,7 @@ const Categories = () => {
         {name: 'Мясо', option: 'myaso'}
     ];
 
-    const category = useSelector((state) => state.filterSlice.category);
+    const {category} = useSelector(selectFilter);
     const dispath = useDispatch();
 
     return (

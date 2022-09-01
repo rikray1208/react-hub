@@ -27,13 +27,14 @@ export const filterSlice = createSlice({
         },
 
         setAllFilters: (state, action) => {
-            //console.log(action.payload)
-            //console.log(state.category)
             state.category = action.payload.filter;
             state.sortType.type = action.payload.sortBy;
         }
     },
 })
+
+export const selectFilter = (state) => state.filterSlice
+
 export const { setCategory, setSortType, setSearchValue, setAllFilters} = filterSlice.actions;
 
 export default filterSlice;
