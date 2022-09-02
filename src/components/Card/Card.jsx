@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import caloriesImg from "../../assets/cardImg/calories.png";
 import time from "../../assets/cardImg/time.png";
 import {Link} from "react-router-dom";
@@ -10,6 +10,7 @@ import {addRecipe, deleteRecipe, selectCartByID} from "../../redux/cartSlice";
 
 const Card = (props) => {
     const {id, title, category, categoryImg, imageUrl, cookingTime, calories} = props;
+    const [hover, setHover] = useState(false);
     const dispath = useDispatch();
     const likedCardById = useSelector(selectCartByID(id));
 
@@ -19,8 +20,13 @@ const Card = (props) => {
 
     return (
        <>
-           <div className={classes.container}>
-               <CardBookMark onClick={() => saveRecipe()} flag={likedCardById} />
+           <div className={classes.container} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+               <CardBookMark
+                   onClick={() => saveRecipe()}
+                   flag={likedCardById}
+                   hover={hover}
+                   sethover={setHover}
+               />
                <h1 className={classes.title}>{title}</h1>
                <div className={classes.container__categories}>
                    <div className={classes.categories__mainCategory}>
@@ -44,5 +50,4 @@ const Card = (props) => {
        </>
     );
 };
-
 export default Card;

@@ -1,4 +1,3 @@
-import {useNavigate} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
@@ -13,7 +12,7 @@ function App() {
             <div className='wrapper'>
                 <Header/>
                     {pathname !== '/saved' &&
-                        <div className='cards__container'>
+                        <div className='sortAndFilter__container'>
                             <Categories/>
                             <Sort/>
                         </div>

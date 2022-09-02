@@ -10,10 +10,51 @@ body {
 }
 
 .wrapper {
-    @apply block max-w-[1340px] w-full min-h-[100vh] rounded-xl mx-auto bg-white shadow-Container;
+    @apply flow-root max-w-[1340px] w-full rounded-xl mx-auto bg-white shadow-Container;
 }
 
-.cards__container {
-
+.sortAndFilter__container {
     @apply flex flex-wrap gap-4 justify-center px-6 py-10 border-b-2 border-b-myGrey flex md:px-16 md:justify-between
 }
+
+.grid__container {
+    @apply grid grid-cols-1 m-6 place-items-center gap-y-16 empty:m-0 md:grid-cols-2 md:m-16 lg:grid-cols-3 xl:grid-cols-4
+}
+
+.bookMark {
+    animation: show 1s ease;
+    position: absolute;
+    right: 16px;
+    top: -16px;
+
+}
+
+@keyframes show {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+
+.bookMark-enter {
+    animation: show 1s ease;
+}
+
+.bookMark-exit {
+    animation: hide 1s ease;
+}
+

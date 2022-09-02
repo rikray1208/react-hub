@@ -8,8 +8,8 @@ export const useFetch = (request, ...dependencies) => {
     useEffect(() => {
         setIsLoading(true);
         request()
-            .then(response => setData(response.data))
-            .catch(error => setError(error.message))
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
             .finally(() => setIsLoading(false))
     }, [...dependencies])
 
