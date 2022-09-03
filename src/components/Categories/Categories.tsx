@@ -1,10 +1,16 @@
 import React from 'react';
-import classes from "./Categories.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {selectFilter, setCategory} from "../../redux/filterSlice";
+import classes from './Categories.module.scss'
 
-const Categories = () => {
-    const categories = [
+type CategoriesItems = {
+    name: string,
+    option: string
+}
+
+const Categories: React.FC = () => {
+
+    const categories: CategoriesItems[] = [
         {name: 'Все', option: 'vse'},
         {name: 'Десерты', option: 'deserty'},
         {name: 'Салаты', option: 'salaty'},

@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import arrow from '../assets/tick.svg'
 
 const Saved = () => {
-    const likedArray = useSelector((state) => state.cart.likedCards);
+    const likedArray = useSelector((state: any) => state.cart.likedCards);
 
     return (
         <>
@@ -23,7 +23,7 @@ const Saved = () => {
                         </Link>
                     </div>
                     <div className='grid grid-cols-1 p-6 place-items-center gap-y-16 md:grid-cols-2 md:p-16 lg:grid-cols-3 xl:grid-cols-4'>
-                        {likedArray.map(el =>
+                        {likedArray.map((el: any) =>
                             <Card key={el.id} {...el}/>
                         )}
                     </div>

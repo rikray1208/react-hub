@@ -6,7 +6,7 @@ import HeaderButton from "../UI/buttons/HeaderButton";
 import Search from "../UI/inputs/Search";
 import {Link} from "react-router-dom";
 
-const Header = () => {
+const Header: React.FC = () => {
 
     return (
         <header className='flex flex-wrap gap-x-4 gap-y-4 justify-center  items-center border-b-2 border-b-myGrey py-6 px-6 sm:justify-between md:px-16'>

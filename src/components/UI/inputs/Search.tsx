@@ -8,11 +8,11 @@ import closeIcon from '../../../assets/close.svg'
 const Search = () => {
     const {searchValue} = useSelector(selectFilter);
     const dispath = useDispatch();
-    const inputRef = useRef();
+    const inputRef = useRef<HTMLInputElement>(null);
 
     function clearSearch() {
         dispath(setSearchValue(''));
-        inputRef.current.focus()
+        inputRef.current?.focus()
     }
 
     return (

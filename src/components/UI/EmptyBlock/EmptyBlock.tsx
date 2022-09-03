@@ -1,7 +1,7 @@
 import React from 'react';
 import img from "../../../assets/emoji/cloun.png";
 
-const EmptyBlock = () => {
+const EmptyBlock: React.FC = () => {
     return (
         <div className='flex flex-col gap-y-1 px-6 justify-center items-center h-[50vh] sm:h-[60vh]'>
             <img className='w-[140px] sm:w-[200px] object-contain' alt='ERROR' src={img}/>

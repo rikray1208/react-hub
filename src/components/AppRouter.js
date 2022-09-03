@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from "../pages/Home";
 import RecipePage from "../pages/RecipePage";
 import Saved from "../pages/Saved";
+import Home from "../pages/Home";
 
 const appRouter = () => {
     return (

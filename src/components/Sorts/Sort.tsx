@@ -3,15 +3,27 @@ import sortIcon from "../../assets/sortIcon.png";
 import {useDispatch, useSelector} from "react-redux";
 import {selectFilter, setSortType} from "../../redux/filterSlice";
 
-const Sort = () => {
-    const [active, setActive] = useState(false);
+type SortsItems = {
+    name: string;
+    type: string;
+}
 
-    const sortsArr = [{name: 'времени готовки', type:'cookingTime'}, {name: 'калорийности', type:'calories'}, {name: 'популярности', type:'rating'}, {name: 'названию', type:'title'}];
+
+const Sort: React.FC = () => {
+    const [active, setActive] = useState<boolean>(false);
+
+    const sortsArr: SortsItems[] = [
+        {name: 'времени готовки', type:'cookingTime'},
+        {name: 'калорийности', type:'calories'},
+        {name: 'популярности', type:'rating'},
+        {name: 'названию', type:'title'}
+    ];
 
     const {sortType} = useSelector(selectFilter);
     const dispath = useDispatch();
 
-    function clickOnItem({name, type}) {
+    function clickOnItem(params: {name: string; type:string}) {
+        const {name, type} = params;
         setActive(false);
         dispath(setSortType({name, type}));
     }

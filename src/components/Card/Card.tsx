@@ -8,9 +8,19 @@ import ButtonArrow from "../UI/buttons/ButtonArrow";
 import {useDispatch, useSelector} from "react-redux";
 import {addRecipe, deleteRecipe, selectCartByID} from "../../redux/cartSlice";
 
-const Card = (props) => {
+type CardProps = {
+    id: number;
+    title: string;
+    category: string;
+    categoryImg: string;
+    imageUrl: string;
+    cookingTime: number;
+    calories: number;
+}
+
+const Card: React.FC<CardProps> = (props) => {
     const {id, title, category, categoryImg, imageUrl, cookingTime, calories} = props;
-    const [hover, setHover] = useState(false);
+    const [ishover, setIsHover] = useState<boolean>(false);
     const dispath = useDispatch();
     const likedCardById = useSelector(selectCartByID(id));
 
@@ -20,12 +30,11 @@ const Card = (props) => {
 
     return (
        <>
-           <div className={classes.container} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+           <div className={classes.container} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
                <CardBookMark
                    onClick={() => saveRecipe()}
-                   flag={likedCardById}
-                   hover={hover}
-                   sethover={setHover}
+                   isActive={!!likedCardById}
+                   isHover={ishover}
                />
                <h1 className={classes.title}>{title}</h1>
                <div className={classes.container__categories}>

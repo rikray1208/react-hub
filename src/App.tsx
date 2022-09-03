@@ -2,8 +2,9 @@ import AppRouter from "./components/AppRouter";
 import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
 import Sort from "./components/Sorts/Sort";
-import React from "react";
+import * as React from "react";
 import {useLocation} from "react-router-dom";
+
 
 function App() {
     const { pathname } = useLocation()
