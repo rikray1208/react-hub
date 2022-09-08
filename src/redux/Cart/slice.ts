@@ -1,19 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState} from "./store";
-
-type likedCardsItems = {
-    id: number;
-    title: string;
-    category: string;
-    categoryImg: string;
-    imageUrl: string;
-    cookingTime: number;
-    calories: number;
-}
-
-interface CartSliceState  {
-    likedCards: likedCardsItems[];
-}
+import {CartSliceState, likedCardsItems} from "./types";
 
 const initialState: CartSliceState = {
     likedCards: []
@@ -33,10 +19,7 @@ const cartSlice = createSlice({
     }
 })
 
-export const selectCart = (state: RootState) => state.cart.likedCards;
-export const selectCartByID = (id: number) => (state: RootState) => state.cart.likedCards.find((el)=> el.id === id);
-
 export const {addRecipe, deleteRecipe} = cartSlice.actions
 
 
-export default cartSlice;
+export default cartSlice.reducer;

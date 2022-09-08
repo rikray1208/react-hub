@@ -1,19 +1,20 @@
 import React, {useEffect} from 'react';
 import CardSkeleton from "../components/Card/CardSkeleton";
 import Card from "../components/Card/Card";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import useDebounce from "../hooks/useDebounce";
-import {fetchRecipes} from "../redux/recipesSlice";
-import {selectFilter} from "../redux/filterSlice";
 import ErrorBlock from "../components/UI/ErrorBlock/ErrorBlock";
 import EmptyBlock from "../components/UI/EmptyBlock/EmptyBlock";
+import {RootState, useAppDispatch} from "../redux/store";
+import {selectFilter} from "../redux/Filter/selectors";
+import {fetchRecipes} from "../redux/Recipes/asyncActions";
 
 
-const Home = () => {
+const Home: React.FC = () => {
     const { category, sortType, searchValue } = useSelector(selectFilter);
-    const { data, status, error } = useSelector((state) => state.recipes);
+    const { data, status, error } = useSelector((state: RootState) => state.recipes);
     const delay = useDebounce(searchValue, 300);
-    const dispath = useDispatch();
+    const dispath = useAppDispatch();
 
     useEffect(() => {
         dispath(
@@ -21,7 +22,7 @@ const Home = () => {
                 sortBy: sortType.type,
                 order: 'desc',
                 filter: category === 'vse' ? '' : category,
-                search: delay
+                search: delay || ''
             })
         )
     }, [category, sortType, delay])
@@ -32,7 +33,7 @@ const Home = () => {
     }, [])
 
     if (status === 'error') {
-        return <ErrorBlock error={error}/>
+        return <ErrorBlock error={'' + error}/>
     }
 
     return (

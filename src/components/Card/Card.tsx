@@ -6,7 +6,8 @@ import CardBookMark from "../UI/svgImages/CardBookMark/CardBookMark";
 import classes from "./Card.module.scss";
 import ButtonArrow from "../UI/buttons/ButtonArrow";
 import {useDispatch, useSelector} from "react-redux";
-import {addRecipe, deleteRecipe, selectCartByID} from "../../redux/cartSlice";
+import {selectCartByID} from "../../redux/Cart/selectors";
+import {addRecipe, deleteRecipe} from "../../redux/Cart/slice";
 
 type CardProps = {
     id: number;

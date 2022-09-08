@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import sortIcon from "../../assets/sortIcon.png";
 import {useDispatch, useSelector} from "react-redux";
-import {selectFilter, setSortType} from "../../redux/filterSlice";
+import {selectFilterSortType} from "../../redux/Filter/selectors";
+import {setSortType} from "../../redux/Filter/slice";
 
 type SortsItems = {
     name: string;
@@ -19,7 +20,7 @@ const Sort: React.FC = () => {
         {name: 'названию', type:'title'}
     ];
 
-    const {sortType} = useSelector(selectFilter);
+    const sortName = useSelector(selectFilterSortType);
     const dispath = useDispatch();
 
     function clickOnItem(params: {name: string; type:string}) {
@@ -32,7 +33,7 @@ const Sort: React.FC = () => {
         <div tabIndex={1} onBlur={()=> setActive(false)} className='flex flex-wrap items-center relative outline-none'>
             <img className='w-fit h-fit mr-1.5' alt='#' src={sortIcon}/>
             <p className='text-sm font-bold md:text-lg'>
-                Сортировка по: <span className='text-mySecondary font-light underline cursor-pointer select-none' onClick={() => setActive(!active)}>{sortType.name}</span>
+                Сортировка по: <span className='text-mySecondary font-light underline cursor-pointer select-none' onClick={() => setActive(!active)}>{sortName}</span>
             </p>
             {active && (
                 <ul className='flex flex-col bg-myGrey p-4 rounded-2xl absolute top-12 right-[-2px] z-10'>

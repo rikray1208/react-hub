@@ -1,12 +1,14 @@
 import React, {useRef} from 'react';
 import SearchSvg from "../svgImages/SearchSvg";
 import {useDispatch, useSelector} from "react-redux";
-import {selectFilter, setSearchValue} from "../../../redux/filterSlice";
+
 import classes from "./Search.module.scss";
 import closeIcon from '../../../assets/close.svg'
+import {selectFilterSearch} from "../../../redux/Filter/selectors";
+import {setSearchValue} from "../../../redux/Filter/slice";
 
 const Search = () => {
-    const {searchValue} = useSelector(selectFilter);
+    const searchValue = useSelector(selectFilterSearch);
     const dispath = useDispatch();
     const inputRef = useRef<HTMLInputElement>(null);
 

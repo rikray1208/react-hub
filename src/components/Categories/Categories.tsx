@@ -1,7 +1,9 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {selectFilter, setCategory} from "../../redux/filterSlice";
+import {useSelector} from "react-redux";
 import classes from './Categories.module.scss'
+import {useAppDispatch} from "../../redux/store";
+import {selectFilterCategory} from "../../redux/Filter/selectors";
+import {setCategory} from "../../redux/Filter/slice";
 
 type CategoriesItems = {
     name: string,
@@ -18,8 +20,8 @@ const Categories: React.FC = () => {
         {name: 'Мясо', option: 'myaso'}
     ];
 
-    const {category} = useSelector(selectFilter);
-    const dispath = useDispatch();
+    const category = useSelector(selectFilterCategory);
+    const dispath = useAppDispatch();
 
     return (
         <div className={classes.container}>
