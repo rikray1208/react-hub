@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import caloriesImg from "../../assets/cardImg/calories.png";
 import time from "../../assets/cardImg/time.png";
 import {Link} from "react-router-dom";
-import CardBookMark from "../UI/svgImages/CardBookMark/CardBookMark";
+import CardBookMark from "../UI/CardBookMark/CardBookMark";
 import classes from "./Card.module.scss";
-import ButtonArrow from "../UI/buttons/ButtonArrow";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCartByID} from "../../redux/Cart/selectors";
 import {addRecipe, deleteRecipe} from "../../redux/Cart/slice";
+import {ButtonArrow} from "../index";
 
 type CardProps = {
     id: number;
@@ -19,9 +19,16 @@ type CardProps = {
     calories: number;
 }
 
+type CategoryType = {
+    [key: string]: string;
+    myaso: string; 
+    deserty: string;
+    salaty: string;
+    pp: string;
+}
+
 const Card: React.FC<CardProps> = (props) => {
     const {id, title, category, categoryImg, imageUrl, cookingTime, calories} = props;
-    const [ishover, setIsHover] = useState<boolean>(false);
     const dispath = useDispatch();
     const likedCardById = useSelector(selectCartByID(id));
 
@@ -29,19 +36,27 @@ const Card: React.FC<CardProps> = (props) => {
         likedCardById ? dispath(deleteRecipe(id)): dispath(addRecipe(props))
     }
 
+
+
+    const categotyTranslator: CategoryType = {
+        myaso: 'мясо',
+        deserty: 'десерты',
+        salaty: 'салаты',
+        pp: 'пп',
+    }
+
     return (
        <>
-           <div className={classes.container} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+           <div className={classes.container}>
                <CardBookMark
                    onClick={() => saveRecipe()}
                    isActive={!!likedCardById}
-                   isHover={ishover}
                />
                <h1 className={classes.title}>{title}</h1>
                <div className={classes.container__categories}>
                    <div className={classes.categories__mainCategory}>
                        <img width='26px' height='26px' alt='img' src={categoryImg}/>
-                       <p className={classes.mainCategory__name}>{category}</p>
+                       <p className={classes.mainCategory__name}>{categotyTranslator[category]}</p>
                    </div>
                    <div className={classes.categories__categoryBlock}>
                        <img height='18px' width='18px' alt='img' src={caloriesImg}/>

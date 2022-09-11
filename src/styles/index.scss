@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind utilities;
 
-
 body {
     background-color: #E8C9A2;
     font-family: 'Nunito', sans-serif;
@@ -21,40 +20,6 @@ body {
     @apply grid grid-cols-1 m-6 place-items-center gap-y-16 empty:m-0 md:grid-cols-2 md:m-16 lg:grid-cols-3 xl:grid-cols-4
 }
 
-.bookMark {
-    animation: show 1s ease;
-    position: absolute;
-    right: 16px;
-    top: -16px;
-
-}
-
-@keyframes show {
-    0%{
-        opacity: 0;
-    }
-
-    100%{
-        opacity: 1;
-    }
-}
-
-@keyframes hide {
-    0%{
-        opacity: 1;
-    }
-
-    100%{
-        opacity: 0;
-    }
-}
 
 
-.bookMark-enter {
-    animation: show 1s ease;
-}
-
-.bookMark-exit {
-    animation: hide 1s ease;
-}
 

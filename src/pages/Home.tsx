@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
-import CardSkeleton from "../components/Card/CardSkeleton";
-import Card from "../components/Card/Card";
+
 import {useSelector} from "react-redux";
 import useDebounce from "../hooks/useDebounce";
-import ErrorBlock from "../components/UI/ErrorBlock/ErrorBlock";
-import EmptyBlock from "../components/UI/EmptyBlock/EmptyBlock";
+
 import {RootState, useAppDispatch} from "../redux/store";
 import {selectFilter} from "../redux/Filter/selectors";
 import {fetchRecipes} from "../redux/Recipes/asyncActions";
+
+import {Card, CardSkeleton, EmptyBlock, ErrorBlock} from "../components";
 
 
 const Home: React.FC = () => {

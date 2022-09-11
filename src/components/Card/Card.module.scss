@@ -1,6 +1,13 @@
 .container {
   transition: all 0.2s ease-in-out;
   animation: showCard 0.3s linear;
+
+  &:hover {
+    .bookMark {
+      top: -16px
+    }
+  }
+
   @apply relative max-w-[255px] h-[300px] rounded-2xl bg-white shadow-cardShadow flex flex-col overflow-hidden hover:translate-y-[-8px] hover:scale-105
 }
 
@@ -42,4 +49,18 @@
 
 .foodImg {
   @apply w-full h-[172px] mt-[10px] rounded-xl object-cover
+}
+
+.bookMark {
+  position: absolute;
+  right: 16px;
+  top: -40px;
+
+  transition: top 0.2s ease .1s;
+}
+
+.bookMarkActive {
+  position: absolute;
+  right: 16px;
+  top: -16px;
 }

@@ -1,21 +1,20 @@
 import AppRouter from "./components/AppRouter";
-import Header from "./components/Header/Header";
-import Categories from "./components/Categories/Categories";
-import Sort from "./components/Sorts/Sort";
+
 import * as React from "react";
 import {useLocation} from "react-router-dom";
 
+import {Header, Categories, Sorts} from "./components";
 
 function App() {
     const { pathname } = useLocation()
 
     return (
             <div className='wrapper'>
-                <Header/>
+                <Header />
                     {pathname !== '/saved' &&
                         <div className='sortAndFilter__container'>
                             <Categories/>
-                            <Sort/>
+                            <Sorts/>
                         </div>
                     }
                 <AppRouter/>

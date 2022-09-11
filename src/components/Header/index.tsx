@@ -2,9 +2,10 @@ import React from 'react';
 import logo from "../../assets/headerImg/logo.png";
 import BookMarkSvg from "../UI/svgImages/BookMarkSvg";
 import ProfileSvg from "../UI/svgImages/ProfileSvg";
-import HeaderButton from "../UI/buttons/HeaderButton";
-import Search from "../UI/inputs/Search";
 import {Link} from "react-router-dom";
+import {HeaderButton, Search} from "../index";
+
+
 
 const Header: React.FC = () => {
 

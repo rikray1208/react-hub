@@ -1,10 +1,9 @@
 import React from 'react';
 import bad from '../assets/emoji/bad.png'
-import ButtonLink from "../components/UI/buttons/ButtonLink";
-import Card from "../components/Card/Card";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import arrow from '../assets/tick.svg'
+import {ButtonLink, Card} from "../components";
 
 const Saved = () => {
     const likedArray = useSelector((state: any) => state.cart.likedCards);

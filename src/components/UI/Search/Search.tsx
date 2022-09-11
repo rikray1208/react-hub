@@ -26,7 +26,7 @@ const Search = () => {
                 placeholder='Поиск рецетопв...'
                 value={searchValue}
             />
-            {searchValue ? <img className={classes.search_closeIcon} alt='close' src={closeIcon} onClick={() => clearSearch()}/> : ''}
+            {searchValue ? <img className={classes.search_closeIcWon} alt='close' src={closeIcon} onClick={() => clearSearch()}/> : ''}
         </div>
     );
 };
