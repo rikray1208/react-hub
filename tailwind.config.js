@@ -10,7 +10,8 @@ module.exports = {
         'lightGrey': '#626262',
         'myHoverGrey': '#F4F1F0',
         'myOrange': '#CA512E',
-        'mySideText': '#0E0805'
+        'mySideText': '#0E0805',
+        'overlay': 'rgba(0, 0, 0, 0.25)',
       },
       boxShadow: {
         'cardShadow': '0 8px 20px rgba(0, 0, 0, 0.25)',

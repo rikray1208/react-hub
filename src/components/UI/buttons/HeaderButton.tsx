@@ -1,8 +1,14 @@
 import React from 'react';
 
-const HeaderButton: React.FC<any> = ({children}) => {
+type BtnProps = {
+    setActive?: any;
+    children: JSX.Element | string;
+}
+
+const HeaderButton: React.FC<BtnProps> = ({setActive, children}) => {
+
     return (
-        <div className='flex justify-center items-center rounded-2xl bg-myGrey w-[48px] h-12 hover:bg-myHoverGrey'>
+        <div onClick={setActive} className='flex justify-center items-center rounded-2xl bg-myGrey min-w-[48px] h-12 text-mySecondary font-bold cursor-pointer hover:bg-myHoverGrey'>
             {children}
         </div>
     );

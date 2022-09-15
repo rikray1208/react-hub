@@ -1,0 +1,52 @@
+.modal {
+  @apply w-[100%] h-[100%] py-16 flex justify-center items-center
+}
+
+.form {
+    @apply bg-myGrey shadow-2xl rounded-2xl p-6 flex flex-col gap-y-6 max-w-[300px] w-full sm:max-w-[425px]
+}
+
+.form__header {
+  @apply border-b border-gray-300 pb-2 mb-4
+}
+
+.form__title {
+  @apply text-2xl text-myBlack
+}
+
+.form__inputWrapper {
+  @apply flex flex-col w-full items-center relative
+}
+
+.form__input {
+  &:focus ~ .form__label,
+  &:not(:focus):valid ~ .form__label{
+    @apply top-[-8px] text-xs text-mySecondary top-[-8px]
+  }
+
+  &:focus {
+    @apply border-mySecondary
+  }
+
+  &:not(:focus) {
+    @apply hover:border-gray-500
+  }
+
+  @apply border border-gray-300 rounded-lg h-12 px-2 max-w-[260px] w-full text-myBlack sm:max-w-[325px]
+}
+
+.form__label {
+  @apply text-base font-medium text-gray-400 pointer-events-none transition-all absolute top-[13px] left-1 bg-white px-2 sm:left-9
+}
+
+.form__btn {
+  @apply border outline-0 border-mySecondary rounded-lg px-4 py-2 self-center text-mySecondary transition-all hover:bg-mySecondary hover:text-white active:translate-y-1 active:scale-95
+}
+
+.form__isAuth {
+  @apply text-base text-myBlack font-medium mb-1
+}
+
+.form__link {
+  @apply text-mySecondary underline font-light
+}

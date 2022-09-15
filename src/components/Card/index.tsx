@@ -21,10 +21,6 @@ type CardProps = {
 
 type CategoryType = {
     [key: string]: string;
-    myaso: string; 
-    deserty: string;
-    salaty: string;
-    pp: string;
 }
 
 const Card: React.FC<CardProps> = (props) => {
