@@ -15,7 +15,7 @@
 }
 
 .form__inputWrapper {
-  @apply flex flex-col w-full items-center relative
+  @apply w-full px-0 sm:px-10 relative
 }
 
 .form__input {
@@ -36,17 +36,31 @@
 }
 
 .form__label {
-  @apply text-base font-medium text-gray-400 pointer-events-none transition-all absolute top-[13px] left-1 bg-white px-2 sm:left-9
+  @apply text-base font-medium text-gray-400 pointer-events-none transition-all absolute top-[13px] left-1 bg-white px-2 sm:left-12
 }
 
 .form__btn {
-  @apply border outline-0 border-mySecondary rounded-lg px-4 py-2 self-center text-mySecondary transition-all hover:bg-mySecondary hover:text-white active:translate-y-1 active:scale-95
+  @apply border outline-0 border-mySecondary rounded-lg px-4 py-2 self-center text-mySecondary transition-all
+  hover:bg-mySecondary
+  hover:text-white
+  active:translate-y-1
+  active:scale-95
+  disabled:opacity-60
 }
-
 .form__isAuth {
-  @apply text-base text-myBlack font-medium mb-1
+  @apply text-sm text-myBlack font-medium mb-1 sm:text-base
 }
 
 .form__link {
-  @apply text-mySecondary underline font-light
+  @apply text-mySecondary underline font-light text-sm sm:text-base
+}
+
+.errorWrapper {
+  @apply flex mt-2
+}
+
+.errorWrapper__text {
+  transition: all 2s ease-in-out;
+
+  @apply font-bold text-red-600 text-sm ml-1 mt-px self-center
 }

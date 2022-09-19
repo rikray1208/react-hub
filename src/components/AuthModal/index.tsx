@@ -1,65 +1,37 @@
-import React, {useState} from 'react';
+import React, {MouseEvent} from 'react';
 import classes from './AuthModal.module.scss'
 import {Link, useNavigate} from "react-router-dom";
 import {useLocation} from "react-router-dom";
 import {login, registration} from "../../https/userApi";
-import {RootState, useAppDispatch} from "../../redux/store";
-import {useSelector} from "react-redux";
+import {useAppDispatch} from "../../redux/store";
 import {setIsAuth, setUser} from "../../redux/User/slice";
-
-
-type AuthProps = {
-    closeModal: (value: boolean) => void;
-}
+import useInput from "../../hooks/useInput";
+import errorSvg from "../../assets/erorrIcon1.svg"
 
 const AuthModal: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
-    const [emailDirty, setEmailDirty] = useState<boolean>(false);
-    
-    const [password, setPassword] = useState<string>('');
-    const [passwordDirty, setPasswordDirty] = useState<boolean>(false);
-    
-    const [passwordError, setPasswordError] = useState<string>('Пароль не может быть пустым');
-    const [emailError, setEmailError] = useState<string>('Емейл не может быть пустым');
-    
+    const email = useInput('', {isEmail: true});
+    const password = useInput('', {isEmpty: true, isLatin: true, containNumber: true, minLength: 3});
+
     let navigate = useNavigate();
     const { pathname } = useLocation();
     const isLogin = pathname === '/login';
 
     const dispath = useAppDispatch();
-    const user = useSelector((state: RootState) => state.user);
-    
-    function blurHandler(event: any) {
-        const name = event.target.name
-        switch ( name ) {
-            case 'email':
-                console.log('setemai;')
-                setEmailDirty(true);
-                break;
 
-            case 'psw' :
-                setPasswordDirty(true)
-                break;
-        }
-    }
-
-    async function auntification(event: any) {
+    async function authentication(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault()
-
         try {
             let userData;
 
             if(isLogin) {
-                userData = await login(email, password);
+                userData = await login(email.value, password.value);
             } else {
-                userData = await registration(email, password)
+                userData = await registration(email.value, password.value)
             }
             dispath(setUser(userData));
             dispath(setIsAuth(true));
             navigate('/')
-
         }catch (error: any) {
-
             alert(error.response.data.message)
         }
     }
@@ -72,41 +44,52 @@ const AuthModal: React.FC = () => {
                         {isLogin ? "Вход" : "Регестрация"}
                     </h1>
                 </div>
-
-                {emailDirty && <h3 className='font-bold text-red-600'>{emailError}</h3>}
                 <div className={classes.form__inputWrapper}>
                     <input
-                        onBlur={blurHandler}
+                        onBlur={email.onBlur}
                         className={classes.form__input}
                         type='text'
                         name='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={email.value}
+                        onChange={email.onChange}
                         required
                     />
                     <label className={classes.form__label}>Электронная почта</label>
-                </div>
 
-                {passwordDirty && <h3 className='font-bold text-red-600'>{passwordError}</h3>}
+                    {email.arrErrors.map((el) =>
+                        (el && email.isDirty) &&
+                        <div key={el} className={classes.errorWrapper}>
+                            <img className='w-fit h-fit' alt='error' src={errorSvg}/>
+                            <h3 className={classes.errorWrapper__text}>{el}</h3>
+                        </div>
+                    )}
+                </div>
                 <div className={classes.form__inputWrapper}>
                     <input
-                        onBlur={blurHandler}
+                        onBlur={password.onBlur}
                         className={classes.form__input}
                         type='password'
                         name='psw'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={password.value}
+                        onChange={password.onChange}
                         required
                     />
                     <label className={classes.form__label}>Пароль</label>
+                    {password.arrErrors.map((el ) =>
+                        (el && password.isDirty) &&
+                            <div key={el} className={classes.errorWrapper}>
+                                <img className='w-fit h-fit' alt='error' src={errorSvg}/>
+                                <h3 className={classes.errorWrapper__text}>{el}</h3>
+                            </div>
+                    )}
                 </div>
                 <button
-                    onClick={auntification}
+                    disabled={!email.isValid || !password.isValid}
+                    onClick={authentication}
                     className={classes.form__btn}
                 >
                     {isLogin ? 'войти' : 'зарегистрироваться'}
                 </button>
-
                 {isLogin ?
                     <p className={classes.form__isAuth}>Нет аккаунта?&nbsp;
                         <Link to='/registration'>
@@ -114,7 +97,7 @@ const AuthModal: React.FC = () => {
                         </Link>
                     </p>
                     :
-                    <p className={classes.form__isAuth}>Есть аккаунта?&nbsp;
+                    <p className={classes.form__isAuth}>Есть аккаунт?&nbsp;
                         <Link to='/login'>
                             <span className={classes.form__link}>Войти</span>
                         </Link>

@@ -33,12 +33,10 @@ function App() {
     return (
             <div className='wrapper'>
                 <Header />
-                    {booleanСondition &&
-                        <div className='sortAndFilter__container'>
-                            <Categories/>
-                            <Sorts/>
-                        </div>
-                    }
+                <div className='sortAndFilter__container'>
+                    <Categories/>
+                    <Sorts/>
+                </div>
                 <AppRouter/>
             </div>
     );
