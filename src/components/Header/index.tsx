@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import logo from "../../assets/headerImg/logo.png";
+import logo from "../../assets/headerImg/logo1.png";
 import bookMark from '../../assets/headerImg/bookmark.svg'
 import ProfileSvg from '../../assets/headerImg/profile.svg'
 import {Link} from "react-router-dom";
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
     }
 
     return (
-        <header className='flex flex-wrap gap-x-4 gap-y-4 justify-center  items-center border-b-2 border-b-myGrey py-6 px-6 sm:justify-between md:px-16'>
+        <header className='flex flex-wrap gap-x-4 gap-y-4 items-center border-b-2 border-b-myGrey py-6 px-6 sm:justify-between md:px-16'>
             <div className='flex items-center'>
                 <img src={logo} alt='logo'/>
                 <Link to='/'>

@@ -30,7 +30,7 @@ const Saved = () => {
                 :
                 <div className='flex flex-col gap-y-1 px-6 justify-center items-center h-[50vh]'>
                     <h1 className='text-myBlack font-bold text-2xl sm:text-5xl'>У вас нет  закладок... </h1>
-                    <p className='text-lightGrey text-xs max-w-[640px] sm:text-xl'>Чтоб добавить рецепт в закладки, перейдите на главную страницу и нажмите на иконку закладки над нужным рецептом</p>
+                    <p className='text-lightGrey text-xs max-w-[640px] text-center sm:text-xl'>Чтоб добавить рецепт в закладки, перейдите на главную страницу и нажмите на иконку закладки над нужным рецептом</p>
                     <img className='w-[100px] my-4 sm:w-fit' alt={':('} src={bad}/>
                     <ButtonLink route='/'>Вернуться назад</ButtonLink>
                 </div>

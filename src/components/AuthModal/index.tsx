@@ -21,13 +21,8 @@ const AuthModal: React.FC = () => {
     async function authentication(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault()
         try {
-            let userData;
+            const userData = isLogin ? await login(email.value, password.value) : await registration(email.value, password.value);
 
-            if(isLogin) {
-                userData = await login(email.value, password.value);
-            } else {
-                userData = await registration(email.value, password.value)
-            }
             dispath(setUser(userData));
             dispath(setIsAuth(true));
             navigate('/')
