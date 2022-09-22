@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {FilterSliceState, Sorts} from "./types";
 
 const initialState: FilterSliceState = {
-    category: 'vse',
+    category: 'all',
     sortType: {
         name: 'популярности',
         type: 'rating'

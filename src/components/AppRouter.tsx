@@ -18,10 +18,10 @@ const AppRouter: React.FC = () => {
         <Suspense fallback={<h1>Loading...</h1>}>
             <Routes>
                 {isAuth &&
-                    [
-                        <Route path="/saved" element={<Saved/>}/>,
+                    <>
+                        <Route path="/saved" element={<Saved/>}/>
                         <Route path="/admin" element={<Admin/>}/>
-                    ]
+                    </>
                 }
 
                 <Route path="/" element={<Home/>}/>

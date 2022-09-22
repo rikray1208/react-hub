@@ -8,6 +8,7 @@ import {selectFilter} from "../redux/Filter/selectors";
 import {fetchRecipes} from "../redux/Recipes/asyncActions";
 
 import {Card, CardSkeleton, EmptyBlock, ErrorBlock} from "../components";
+import {FetchParams} from "../redux/Recipes/types";
 
 
 const Home: React.FC = () => {
@@ -17,16 +18,20 @@ const Home: React.FC = () => {
     const dispath = useAppDispatch();
 
     useEffect(() => {
+        const params: FetchParams = {
+            sort: sortType.type,
+            order: 'desc',
+            search: delay || ''
+        }
+
+        if (category !== 'all') {
+            params['filterByCategory'] = category;
+        }
+
         dispath(
-            fetchRecipes({
-                sortBy: sortType.type,
-                order: 'desc',
-                filter: category === 'vse' ? '' : category,
-                search: delay || ''
-            })
+            fetchRecipes(params)
         )
     }, [category, sortType, delay])
-
 
     useEffect(() => {
         window.scrollTo(0, 0)

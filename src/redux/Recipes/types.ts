@@ -22,8 +22,8 @@ export interface RecipesSliceState {
 }
 
 export type FetchParams = {
-    sortBy: string;
+    sort: string;
     order: string;
-    filter: string;
+    filterByCategory?: string;
     search: string;
 }

@@ -13,7 +13,7 @@ type CategoriesItems = {
 const Categories: React.FC = () => {
 
     const categories: CategoriesItems[] = [
-        {name: 'Все', option: 'vse'},
+        {name: 'Все', option: 'all'},
         {name: 'Десерты', option: 'deserty'},
         {name: 'Салаты', option: 'salaty'},
         {name: 'ПП', option: 'pp'},

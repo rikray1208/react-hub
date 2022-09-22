@@ -32,9 +32,7 @@ const Card: React.FC<CardProps> = (props) => {
         likedCardById ? dispath(deleteRecipe(id)): dispath(addRecipe(props))
     }
 
-
-
-    const categotyTranslator: CategoryType = {
+    const categoryTranslator: CategoryType = {
         myaso: 'мясо',
         deserty: 'десерты',
         salaty: 'салаты',
@@ -52,7 +50,7 @@ const Card: React.FC<CardProps> = (props) => {
                <div className={classes.container__categories}>
                    <div className={classes.categories__mainCategory}>
                        <img width='26px' height='26px' alt='img' src={categoryImg}/>
-                       <p className={classes.mainCategory__name}>{categotyTranslator[category]}</p>
+                       <p className={classes.mainCategory__name}>{categoryTranslator[category]}</p>
                    </div>
                    <div className={classes.categories__categoryBlock}>
                        <img height='18px' width='18px' alt='img' src={caloriesImg}/>

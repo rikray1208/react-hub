@@ -10,11 +10,8 @@ import {useAppDispatch} from "./redux/store";
 import {setIsAuth, setUser} from "./redux/User/slice";
 
 function App() {
-    const { pathname } = useLocation();
     const [loading, setLoading] = useState<boolean>(true);
     const dispath = useAppDispatch();
-
-    const booleanСondition = pathname !== '/saved' && pathname !== '/login' && pathname !== '/registration';
 
     useEffect(() => {
         check()

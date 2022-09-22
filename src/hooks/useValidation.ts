@@ -59,7 +59,7 @@ const useValidation = (value: string, validations: any) => {
                     break
             }
         }
-        console.log(value)
+
     }, [value])
 
     useEffect(() => {

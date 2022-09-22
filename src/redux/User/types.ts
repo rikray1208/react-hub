@@ -1,4 +1,8 @@
 export interface UserSliceState {
-    user: {},
+    user: {
+        id?: number,
+        email?: string,
+        password?: string
+    },
     isAuth: boolean
 }

@@ -6,13 +6,13 @@ import {recipesRequestUrl} from "../../utils/api";
 export const fetchRecipes = createAsyncThunk<DataItems[], FetchParams>(
     'recipes/fetchRecipesStatus',
     async (params) => {
-        const {sortBy, order, filter, search} = params;
+        const {sort, order, filterByCategory, search} = params;
         const data = await axios.get<DataItems[]>(recipesRequestUrl, {
             params: {
-                sortBy,
-                order,
-                filter,
-                search
+                category: filterByCategory,
+                _sort: sort,
+                _order: order,
+                q: search
             }
         })
         return data.data
